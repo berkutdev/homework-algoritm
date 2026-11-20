@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+class Sorting {
+public:
+    void gnome_sort(int arr[], int n) {
+        int iter = 0;
+        int i = 0;
+        while (i < n - 1) {
+            iter++;
+            if (arr[i] > arr[i + 1]) {
+                swap(arr[i], arr[i + 1]);
+                if (i > 0) i--;
+            } else {
+                i++;
+            }
+        }
+        cout << "Gnome: " << iter << endl;
+    }
+
+    void stupid_sort(int arr[], int n) {
+        int iter = 0;
+        int i = 0;
+        while (i < n - 1) {
+            iter++;
+            if (arr[i] > arr[i + 1]) {
+                swap(arr[i], arr[i + 1]);
+                i = 0;
+            } else {
+                i++;
+            }
+        }
+        cout << "Stupid: " << iter << endl;
+    }
+
+    void bubble_sort(int arr[], int n) {
+        int iter = 0;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                iter++;
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr[j], arr[j + 1]);
+                }
+            }
+        }
+        cout << "Bubble: " << iter << endl;
+    }
+};
+
+int main() {
+    const int N = 1000;
+    int a[N], b[N], c[N];
+
+     
+    for (int i = 0; i < N; i++) {
+        a[i] = (i * 37 + 13) % 1000;
+        b[i] = a[i];
+        c[i] = a[i];
+    }
+
+    Sorting s;
+    s.stupid_sort(a, N);
+    s.gnome_sort(b, N);
+    s.bubble_sort(c, N);
+
+    return 0;
+}
