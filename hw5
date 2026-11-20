@@ -1,0 +1,34 @@
+class Product {
+  constructor(title, price, stock) {
+    this.title = title;
+    this.price = price;
+    this.stock = stock;
+  }
+}
+
+const products = [
+  new Product("Laptop", 32000, 5),
+  new Product("Mouse", 850, 24),
+  new Product("Monitor", 9400, 8),
+  new Product("Keyboard", 1900, 15),
+  new Product("Headphones", 1900, 10)
+];
+
+function insertionSortByPrice(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    const current = arr[i];
+    let j = i - 1;
+
+    while (j >= 0 && arr[j].price > current.price) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+
+    arr[j + 1] = current;
+  }
+
+  return arr;
+}
+
+const sortedProducts = insertionSortByPrice(products);
+console.log(sortedProducts);
