@@ -1,0 +1,57 @@
+#include "Product.h"
+
+
+Product& operator++(Product& obj) {
+	obj.SetQuantity(obj.GetQuantity() + 1);
+	return obj;
+}
+
+Product operator++(Product& obj, int) {
+	Product temp = obj;
+	obj.SetQuantity(obj.GetQuantity() + 1);
+	return temp;
+}
+
+
+Product& operator--(Product& obj) {
+	obj.SetQuantity(obj.GetQuantity() - 1);
+	return obj;
+}
+
+
+Product operator--(Product& obj, int) {
+	Product temp = obj;
+	obj.SetQuantity(obj.GetQuantity() - 1);
+	return temp;
+}
+
+
+Product& operator+=(Product& obj, double sum) {
+	obj.SetPrice(obj.GetPrice() + sum);
+	return obj;
+}
+
+
+Product& operator-=(Product& obj, double sum) {
+	obj.SetPrice(obj.GetPrice() - sum);
+	return obj;
+}
+
+int main() {
+	Product p1("Laptop", "Electronics", 999.99, 10);
+	p1.Print();
+
+	++p1; 
+	p1++; 
+	p1.Print();
+
+	p1--; 
+	--p1; 
+	p1.Print();
+
+	p1 += 5000; 
+	p1 -= 2000; 
+	p1.Print();
+
+	return 0;
+}
